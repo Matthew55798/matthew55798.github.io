@@ -44,6 +44,18 @@
 
 使用左侧导航栏浏览不同主题，或使用顶部搜索框查找特定内容。
 
+### 本地预览
+
+```bash
+# 安装 docsify-cli（首次）
+npm i docsify-cli -g
+
+# 启动本地服务器
+docsify serve .
+```
+
+服务启动后访问 http://localhost:3000
+
 ## 📝 关于
 
 本知识库使用 [Docsify](https://docsify.js.org/) 构建，部署于 GitHub Pages。
