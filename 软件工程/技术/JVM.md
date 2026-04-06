@@ -96,7 +96,7 @@ old
 
 ```
 
-![image.png](JVM/e33eebdf-6444-44ea-8a15-57bdc3c55a8d.png)
+![image.png](../../img/技术/JVM/e33eebdf-6444-44ea-8a15-57bdc3c55a8d.png)
 
 ### 为什么使用G1
 
