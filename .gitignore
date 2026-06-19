@@ -31,8 +31,12 @@ yarn-error.log*
 # Export folders
 Export-*/
 
-# Screenshots
+# Screenshots / temporary image dumps
 *.png
 *.jpg
 *.jpeg
 *.gif
+
+# Knowledge-base image assets must be committed.
+!/img/
+!/img/**

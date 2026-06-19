@@ -35,7 +35,7 @@ Redis 使用的是自己设计的 RESP (REdis Serialization Protocol) 协议。�
 1. 应用**先更新 DB**
 2. 然后**直接删除 Cache** 中对应的数据
 
-![Cache Aside 写操作](/img/技术/Redis/cache-aside-write.png)
+![Cache Aside 写操作](/img/技术/redis/cache-aside-write.png)
 
 #### 读操作：
 
@@ -43,7 +43,7 @@ Redis 使用的是自己设计的 RESP (REdis Serialization Protocol) 协议。�
 2. 如果命中(Hit)，则直接返回
 3. 如果未命中(Miss)，则从 DB 读取数据，成功读取后，**将数据写回 Cache**，然后返回
 
-![Cache Aside 读操作](/img/技术/Redis/cache-aside-read.png)
+![Cache Aside 读操作](/img/技术/redis/cache-aside-read.png)
 
 #### 关键问题解析：
 
@@ -96,7 +96,7 @@ Redis 使用的是自己设计的 RESP (REdis Serialization Protocol) 协议。�
 - 先查 Cache，Cache 中不存在，直接更新 DB
 - Cache 中存在，则先更新 Cache，然后 Cache 服务自己更新 DB。只有当 Cache 和 DB 都写入成功后，才向上层返回成功
 
-![Write Through](/img/技术/Redis/write-through.png)
+![Write Through](/img/技术/redis/write-through.png)
 
 #### 读操作（Read Through）：
 
@@ -104,7 +104,7 @@ Redis 使用的是自己设计的 RESP (REdis Serialization Protocol) 协议。�
 - 如果命中，直接返回
 - 如果未命中，由**Cache 服务自己**负责从 DB 加载数据，加载成功后先写入自身，再返回给应用
 
-![Read Through](/img/技术/Redis/read-through.png)
+![Read Through](/img/技术/redis/read-through.png)
 
 **特点**：Read-Through 本质上是把 Cache-Aside 中"读 Miss → 读 DB → 回填 Cache"的逻辑下沉到了缓存服务内部，对客户端透明。需要缓存服务（如 Redis）提供相应的支持。
 

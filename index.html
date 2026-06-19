@@ -42,7 +42,31 @@
             pagination: {
                 previousText: '上一篇',
                 nextText: '下一篇'
-            }
+            },
+            plugins: [
+                function (hook) {
+                    hook.afterEach(function (html, next) {
+                        var container = document.createElement('div');
+                        container.innerHTML = html;
+                        container.querySelectorAll('img[src]').forEach(function (img) {
+                            var src = img.getAttribute('src');
+                            var url;
+
+                            try {
+                                url = new URL(src, window.location.origin);
+                            } catch (e) {
+                                return;
+                            }
+
+                            var imgPathIndex = url.pathname.indexOf('/img/');
+                            if (url.origin === window.location.origin && imgPathIndex > 0) {
+                                img.setAttribute('src', url.pathname.slice(imgPathIndex) + url.search + url.hash);
+                            }
+                        });
+                        next(container.innerHTML);
+                    });
+                }
+            ]
         }
     </script>
 

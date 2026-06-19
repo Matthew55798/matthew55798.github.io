@@ -509,7 +509,7 @@ CBO预估的基数=有效选择性*(总行数−NULL数)
 
 分析Logstash结果我们可以得到
 
-![image.png](/img/技术/数据库/RDB/SQL优化/image.png)
+![image.png](/img/技术/数据库/rdb/sql-optimization/logstash-sql-timing.png)
 
 1. `RSPC_M_S_UC_M_S_Get_SumData_byChannel` Channel Unit Rule Check的查询
 2. `RSPC_M_S_UC_M_S_Get_SumDataForRuleCheck_byDataSeq`Spec Unit Rule Check的查询
@@ -525,7 +525,7 @@ CBO预估的基数=有效选择性*(总行数−NULL数)
 
 这里以`RSPC_S_Get_NearDataSeq_ByPlanSpec` 为例，因为在这次查询中他耗时最多
 
-![image.png](/img/技术/数据库/RDB/SQL优化/image%1.png)
+![image.png](/img/技术/数据库/rdb/sql-optimization/near-data-seq-explain.png)
 
 卧槽，这不是应该快的一B？？
 
@@ -544,7 +544,7 @@ ALTER SYSTEM FLUSH SHARED_POOL;
 ALTER SYSTEM FLUSH BUFFER_CACHE;
 ```
 
-![image.png](/img/技术/数据库/RDB/SQL优化/image 2.png)
+![image.png](/img/技术/数据库/rdb/sql-optimization/execution-plan-allstats.png)
 
 分析执行计划可以得出
 
@@ -567,15 +567,15 @@ Window关键字解决办法：
 
 ## 调优措施
 
-![image.png](/img/技术/数据库/RDB/SQL优化/image 3.png)
+![image.png](/img/技术/数据库/rdb/sql-optimization/index-tuning-before.png)
 
-![image.png](/img/技术/数据库/RDB/SQL优化/image 4.png)
+![image.png](/img/技术/数据库/rdb/sql-optimization/index-tuning-no-effect.png)
 
 咋没效果啊 我日
 
 调换index中的process_time 与 data_seq
 
-![image.png](/img/技术/数据库/RDB/SQL优化/image 5.png)
+![image.png](/img/技术/数据库/rdb/sql-optimization/index-tuning-result.png)
 
 优化结果
 
