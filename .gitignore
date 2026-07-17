@@ -40,3 +40,6 @@ Export-*/
 # Knowledge-base image assets must be committed.
 !/img/
 !/img/**
+
+# Keep macOS metadata ignored after re-including image assets.
+**/.DS_Store
