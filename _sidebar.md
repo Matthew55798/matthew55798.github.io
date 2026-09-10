@@ -64,6 +64,58 @@
         - [第9章 多模态大语言模型](/软件工程/技术/AI/LLM业务实战/第9章%20多模态大语言模型.md)
         - [第10章 创建文本嵌入模型](/软件工程/技术/AI/LLM业务实战/第10章%20创建文本嵌入模型.md)
         - [第12章 微调生成模型](/软件工程/技术/AI/LLM业务实战/第12章%20微调生成模型.md)
+    - **参考资料**
+      - [AI-Coding-团队实践资料中英文对照翻译](/软件工程/技术/参考资料/AI-Coding-团队实践资料中英文对照翻译.md)
+      - [Gitee 高星后台管理系统权限与用户体系调研](/软件工程/技术/参考资料/Gitee%20高星后台管理系统权限与用户体系调研.md)
+      - <a href="/软件工程/技术/参考资料/阿里巴巴%20Java%20开发手册%20黄山版.pdf" target="_blank" data-nosearch>阿里巴巴 Java 开发手册（黄山版）· PDF</a>
+      - <a href="/软件工程/技术/参考资料/面试指北.pdf" target="_blank" data-nosearch>面试指北 · PDF</a>
+      - <a href="/软件工程/技术/参考资料/alibaba-p3c-license.txt" target="_blank" data-nosearch>alibaba-p3c 许可证 · TXT</a>
+      - **20260429 离线文档快照**
+        - **yudao-cloud**（Markdown）
+          - [AI大模型手册](/软件工程/技术/参考资料/20260429/yudao-cloud/AI大模型手册/功能开启%20_%20yudao-cloud%20开发指南.md)
+          - [CRM手册](/软件工程/技术/参考资料/20260429/yudao-cloud/CRM手册/功能开启%20_%20yudao-cloud%20开发指南.md)
+          - [ERP手册](/软件工程/技术/参考资料/20260429/yudao-cloud/ERP手册/功能开启%20_%20yudao-cloud%20开发指南.md)
+          - [IoT物联网手册](/软件工程/技术/参考资料/20260429/yudao-cloud/IoT物联网手册/功能开启%20_%20yudao-cloud%20开发指南.md)
+          - [MES手册](/软件工程/技术/参考资料/20260429/yudao-cloud/MES手册/功能开启%20_%20yudao-cloud%20开发指南.md)
+          - [会员手册](/软件工程/技术/参考资料/20260429/yudao-cloud/会员手册/功能开启%20_%20yudao-cloud%20开发指南.md)
+          - [公众号手册](/软件工程/技术/参考资料/20260429/yudao-cloud/公众号手册/功能开启%20_%20yudao-cloud%20开发指南.md)
+          - [前端手册 Admin Uniapp](/软件工程/技术/参考资料/20260429/yudao-cloud/前端手册%20Admin%20Uniapp/开发规范%20_%20yudao-cloud%20开发指南.md)
+          - [前端手册 Vben 5.x](/软件工程/技术/参考资料/20260429/yudao-cloud/前端手册%20Vben%205.x/开发规范%20_%20yudao-cloud%20开发指南.md)
+          - [前端手册 Vue 2.x](/软件工程/技术/参考资料/20260429/yudao-cloud/前端手册%20Vue%202.x/开发规范%20_%20yudao-cloud%20开发指南.md)
+          - [前端手册 Vue 3.x](/软件工程/技术/参考资料/20260429/yudao-cloud/前端手册%20Vue%203.x/开发规范%20_%20yudao-cloud%20开发指南.md)
+          - [后端手册](/软件工程/技术/参考资料/20260429/yudao-cloud/后端手册/新建服务%20_%20yudao-cloud%20开发指南.md)
+          - [商城手册](/软件工程/技术/参考资料/20260429/yudao-cloud/商城手册/功能开启%20_%20yudao-cloud%20开发指南.md)
+          - [大屏手册](/软件工程/技术/参考资料/20260429/yudao-cloud/大屏手册/大屏设计器%20_%20yudao-cloud%20开发指南.md)
+          - [工作流手册](/软件工程/技术/参考资料/20260429/yudao-cloud/工作流手册/功能开启%20_%20yudao-cloud%20开发指南.md)
+          - [微服务手册](/软件工程/技术/参考资料/20260429/yudao-cloud/微服务手册/微服务调试（必读）%20_%20yudao-cloud%20开发指南.md)
+          - [支付手册](/软件工程/技术/参考资料/20260429/yudao-cloud/支付手册/功能开启%20_%20yudao-cloud%20开发指南.md)
+          - [更新日志](/软件工程/技术/参考资料/20260429/yudao-cloud/更新日志/【v2026-03】%20_%20yudao-cloud%20开发指南.md)
+          - [系统手册](/软件工程/技术/参考资料/20260429/yudao-cloud/系统手册/数据脱敏%20_%20yudao-cloud%20开发指南.md)
+          - [萌新必读](/软件工程/技术/参考资料/20260429/yudao-cloud/萌新必读/简介%20_%20yudao-cloud%20开发指南.md)
+          - [运维手册](/软件工程/技术/参考资料/20260429/yudao-cloud/运维手册/开发环境%20_%20yudao-cloud%20开发指南.md)
+        - **ruoyi-vue-pro**（HTML）
+          - <a href="/软件工程/技术/参考资料/20260429/ruoyi-vue-pro/AI大模型手册/功能开启%20_%20ruoyi-vue-pro%20开发指南%20%282026_04_29%2015_11_53%29.html" target="_blank" data-nosearch>AI大模型手册</a>
+          - <a href="/软件工程/技术/参考资料/20260429/ruoyi-vue-pro/CRM手册/功能开启%20_%20ruoyi-vue-pro%20开发指南%20%282026_04_29%2015_10_35%29.html" target="_blank" data-nosearch>CRM手册</a>
+          - <a href="/软件工程/技术/参考资料/20260429/ruoyi-vue-pro/ERP手册/功能开启%20_%20ruoyi-vue-pro%20开发指南%20%282026_04_29%2015_09_25%29.html" target="_blank" data-nosearch>ERP手册</a>
+          - <a href="/软件工程/技术/参考资料/20260429/ruoyi-vue-pro/IoT物联网手册/功能开启%20_%20ruoyi-vue-pro%20开发指南%20%282026_04_29%2015_15_46%29.html" target="_blank" data-nosearch>IoT物联网手册</a>
+          - <a href="/软件工程/技术/参考资料/20260429/ruoyi-vue-pro/MES手册/功能开启%20_%20ruoyi-vue-pro%20开发指南%20%282026_04_29%2015_18_22%29.html" target="_blank" data-nosearch>MES手册</a>
+          - <a href="/软件工程/技术/参考资料/20260429/ruoyi-vue-pro/中间件手册/定时任务%20_%20ruoyi-vue-pro%20开发指南%20%282026_04_29%2015_01_33%29.html" target="_blank" data-nosearch>中间件手册</a>
+          - <a href="/软件工程/技术/参考资料/20260429/ruoyi-vue-pro/会员手册/功能开启%20_%20ruoyi-vue-pro%20开发指南%20%282026_04_29%2015_05_40%29.html" target="_blank" data-nosearch>会员手册</a>
+          - <a href="/软件工程/技术/参考资料/20260429/ruoyi-vue-pro/公众号手册/功能开启%20_%20ruoyi-vue-pro%20开发指南%20%282026_04_29%2015_22_44%29.html" target="_blank" data-nosearch>公众号手册</a>
+          - <a href="/软件工程/技术/参考资料/20260429/ruoyi-vue-pro/公众号手册%281%29/公众号接入%20_%20ruoyi-vue-pro%20开发指南%20%282026_04_29%2015_22_51%29.html" target="_blank" data-nosearch>公众号手册(1)</a>
+          - <a href="/软件工程/技术/参考资料/20260429/ruoyi-vue-pro/前端手册%20Admin%20Uniapp/开发规范%20_%20ruoyi-vue-pro%20开发指南%20%282026_04_29%2015_29_16%29.html" target="_blank" data-nosearch>前端手册 Admin Uniapp</a>
+          - <a href="/软件工程/技术/参考资料/20260429/ruoyi-vue-pro/前端手册%20Vben%205.x/开发规范%20_%20ruoyi-vue-pro%20开发指南%20%282026_04_29%2015_27_24%29.html" target="_blank" data-nosearch>前端手册 Vben 5.x</a>
+          - <a href="/软件工程/技术/参考资料/20260429/ruoyi-vue-pro/前端手册%20Vue%202.x/开发规范%20_%20ruoyi-vue-pro%20开发指南%20%282026_04_29%2015_28_25%29.html" target="_blank" data-nosearch>前端手册 Vue 2.x</a>
+          - <a href="/软件工程/技术/参考资料/20260429/ruoyi-vue-pro/前端手册%20Vue%203.x/开发规范%20_%20ruoyi-vue-pro%20开发指南%20%282026_04_29%2015_26_04%29.html" target="_blank" data-nosearch>前端手册 Vue 3.x</a>
+          - <a href="/软件工程/技术/参考资料/20260429/ruoyi-vue-pro/后端手册/新建模块%20_%20ruoyi-vue-pro%20开发指南%20%282026_04_29%2014_57_36%29.html" target="_blank" data-nosearch>后端手册</a>
+          - <a href="/软件工程/技术/参考资料/20260429/ruoyi-vue-pro/商城手册/功能开启%20_%20ruoyi-vue-pro%20开发指南%20%282026_04_29%2015_06_37%29.html" target="_blank" data-nosearch>商城手册</a>
+          - <a href="/软件工程/技术/参考资料/20260429/ruoyi-vue-pro/大屏手册/大屏设计器%20_%20ruoyi-vue-pro%20开发指南%20%282026_04_29%2015_04_30%29.html" target="_blank" data-nosearch>大屏手册</a>
+          - <a href="/软件工程/技术/参考资料/20260429/ruoyi-vue-pro/工作流手册/功能开启%20_%20ruoyi-vue-pro%20开发指南%20%282026_04_29%2015_02_25%29.html" target="_blank" data-nosearch>工作流手册</a>
+          - <a href="/软件工程/技术/参考资料/20260429/ruoyi-vue-pro/支付手册/功能开启%20_%20ruoyi-vue-pro%20开发指南%20%282026_04_29%2015_04_39%29.html" target="_blank" data-nosearch>支付手册</a>
+          - <a href="/软件工程/技术/参考资料/20260429/ruoyi-vue-pro/更新日志/【v2026-03】%20_%20ruoyi-vue-pro%20开发指南%20%282026_04_29%2015_30_14%29.html" target="_blank" data-nosearch>更新日志</a>
+          - <a href="/软件工程/技术/参考资料/20260429/ruoyi-vue-pro/系统手册/数据脱敏、字段权限%20_%20ruoyi-vue-pro%20开发指南%20%282026_04_29%2015_24_30%29.html" target="_blank" data-nosearch>系统手册</a>
+          - <a href="/软件工程/技术/参考资料/20260429/ruoyi-vue-pro/萌新必读/简介%20_%20ruoyi-vue-pro%20开发指南%20%282026_04_29%2014_55_34%29.html" target="_blank" data-nosearch>萌新必读</a>
+          - <a href="/软件工程/技术/参考资料/20260429/ruoyi-vue-pro/运维手册/开发环境%20_%20ruoyi-vue-pro%20开发指南%20%282026_04_29%2015_24_49%29.html" target="_blank" data-nosearch>运维手册</a>
   - **常用命令**
     - [Linux常用命令](/软件工程/常用命令/Linux常用命令.md)
     - [Linux动态链接库路径强制设置指南](/软件工程/常用命令/Linux动态链接库路径强制设置指南.md)
