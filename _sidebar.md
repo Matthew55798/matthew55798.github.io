@@ -51,6 +51,8 @@
         - [第3章 评估方法论](/软件工程/技术/AI/AI工程/第3章%20评估方法论.md)
       - **Vibe Coding**
         - [AI Coding 团队实践指南调研](/软件工程/技术/AI/Vibe%20Coding/AI%20Coding%20团队实践指南调研.md)
+        - [AI 开发工作流调研](/软件工程/技术/AI/Vibe%20Coding/AI开发工作流调研.md)
+        - [Vibe Coding 重点摘抄](/软件工程/技术/AI/Vibe%20Coding/Vibe_Coding_重点摘抄.md)
       - **LLM业务实战**
         - [第1章 大语言模型简介](/软件工程/技术/AI/LLM业务实战/第1章%20大语言模型简介.md)
         - [第2章 Tokens和Embeddings](/软件工程/技术/AI/LLM业务实战/第2章%20Tokens和Embeddings.md)

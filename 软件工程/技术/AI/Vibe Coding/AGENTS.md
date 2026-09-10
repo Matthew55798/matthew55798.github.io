@@ -16,6 +16,8 @@ AI Coding / Vibe Coding 团队实践、工具链与工作流资料。
 ### 文件
 
 - [AI Coding 团队实践指南调研.md](/软件工程/技术/AI/Vibe%20Coding/AI%20Coding%20团队实践指南调研.md)
+- [AI开发工作流调研.md](/软件工程/技术/AI/Vibe%20Coding/AI开发工作流调研.md)
+- [Vibe_Coding_重点摘抄.md](/软件工程/技术/AI/Vibe%20Coding/Vibe_Coding_重点摘抄.md)
 
 ## CONVENTIONS
 
