@@ -234,12 +234,7 @@ AFK 能替掉"实现"这一环，但流程里还有几段必须有人。需要�
 
 ### 3.1 CLAUDE.md 与 AGENTS.md 的关系
 
-| 文件 | 谁认它 | 作用域 | 成本 |
-| --- | --- | --- | --- |
-| `AGENTS.md` | 开放格式，Gemini CLI、Devin、Codex、Cursor 都支持 | 仓库根目录 | 同上 |
-| `CLAUDE.md` | **只有 Claude Code 认**（它不识别 `AGENTS.md`） | 全局，**参与每一次请求** | 每次请求都注入，直接吃 token |
-
-结论很简单：**它们本质是同一个东西**，区别只在 Claude Code 只听 `CLAUDE.md`。（P28）
+**它们本质是同一个东西**，区别只在 Claude Code 只听 `CLAUDE.md`。（P28）
 
 ### 3.2 CLAUDE.md 的真实定位 - 一张地图，不是仓库
 
