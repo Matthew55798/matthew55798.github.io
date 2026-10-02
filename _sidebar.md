@@ -46,7 +46,7 @@
       - [健康检查、告警与故障排查](/软件工程/技术/可观测/健康检查、告警与故障排查.md)
     - **AI**
       - [AI 工程词汇](/软件工程/技术/AI/AI工程词汇.md)
-      - [AI Coding for Real Engineers —— Matt Pocock Skills 与标准工作流](/软件工程/技术/AI/AI_coding_for_real_engineers_Matt_Pocock_skills.md)
+      - [AI Coding for Real Engineers](/软件工程/技术/AI/AI_coding_for_real_engineers_Matt_Pocock_skills.md)
       - **AI工程**
         - [第1章 使用基础模型构建AI应用简介](/软件工程/技术/AI/AI工程/第1章%20使用基础模型构建AI应用简介.md)
         - [第2章 理解基础模型](/软件工程/技术/AI/AI工程/第2章%20理解基础模型.md)
