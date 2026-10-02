@@ -1,7 +1,5 @@
 # AI 工程词汇
 
-> 《AI 驱动的全流程软件开发实战》第一部分 ｜ 配套讲义：[AI Coding for Real Engineers —— Matt Pocock Skills 与标准工作流](/软件工程/技术/AI/AI_coding_for_real_engineers_Matt_Pocock_skills.md)
-
 ## 前言
 
 随着大语言模型（LLM）与智能体（Agent）技术的快速发展，编程范式正在经历一场深刻的变革。Vibe Coding、Agentic Coding、Harness Engineer、Loop Engineer……一批新概念、新术语层出不穷。
