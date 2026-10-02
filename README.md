@@ -13,8 +13,15 @@
 本知识库涵盖以下主要领域：
 
 ### 软件工程
-- **技术**: JVM、多线程、集合框架、数据库、分布式系统、微服务、消息队列
-- **常用命令**: Linux、Docker、Oracle
+- **技术**:
+  - Java 基础：JVM、多线程、集合框架
+  - 常用框架：Spring、Spring Boot、MyBatis、MyBatis Plus
+  - 数据库：Redis、Elasticsearch、RDB（事务、SQL 优化、分库分表）
+  - 系统设计基础、分布式系统、微服务架构
+  - 高可用、高性能、可观测
+  - AI：AI 工程词汇、AI 工程、LLM 业务实战、AI Agent、机器学习
+  - 参考资料：Java 开发手册、离线文档快照、AI Coding 资料
+- **常用命令**: Linux、Windows、Docker、Oracle
 - **项目经验**: 实战项目总结
 - **简历**: 职业发展记录
 
@@ -30,13 +37,13 @@
 
 ### 草稿本
 - 工作草稿与思考
-- 量化交易系统设计
-- DDD实践
+- 领域驱动设计读书笔记
+- todo 与生词本
+- 数据源调研（理杏仁 / Tushare）
 
 ### 碎纸堆
-- AI学习笔记
-- LLM Prompt技巧
-- 杂项收藏
+- AI 学习笔记与 Prompt 技巧
+- 量化交易、云游戏、行业调研等杂项收藏
 
 ---
 
