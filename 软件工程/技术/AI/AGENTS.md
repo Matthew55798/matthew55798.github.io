@@ -16,6 +16,7 @@ AI、机器学习、智能体、LLM 应用工程与 AI Coding 的集中知识区
 ### 文件
 
 - `AI工程词汇.md`：AI 工程词汇与概念讲义，覆盖 AI 底层架构、大模型、Prompt、Agent、上下文工程、Harness 与演进路线。
+- `AI_coding_for_real_engineers_Matt_Pocock_skills.md`：Matt Pocock《AI Coding for Real Engineers》课程整理稿，覆盖 LLM 约束、上下文工程、记忆与技能、需求拷问、计划拆票、实现评审、AFK 代理与落地路线；含 92 集分集索引。
 
 ### 子目录
 

@@ -46,6 +46,7 @@
       - [健康检查、告警与故障排查](/软件工程/技术/可观测/健康检查、告警与故障排查.md)
     - **AI**
       - [AI 工程词汇](/软件工程/技术/AI/AI工程词汇.md)
+      - [AI Coding for Real Engineers —— Matt Pocock Skills 与标准工作流](/软件工程/技术/AI/AI_coding_for_real_engineers_Matt_Pocock_skills.md)
       - **AI工程**
         - [第1章 使用基础模型构建AI应用简介](/软件工程/技术/AI/AI工程/第1章%20使用基础模型构建AI应用简介.md)
         - [第2章 理解基础模型](/软件工程/技术/AI/AI工程/第2章%20理解基础模型.md)
@@ -62,7 +63,6 @@
         - [第10章 创建文本嵌入模型](/软件工程/技术/AI/LLM业务实战/第10章%20创建文本嵌入模型.md)
         - [第12章 微调生成模型](/软件工程/技术/AI/LLM业务实战/第12章%20微调生成模型.md)
     - **参考资料**
-      - [Matt Pocock Skills 与标准工作流](/软件工程/技术/参考资料/Matt_Pocock_Skills与标准工作流.md)
       - [Gitee 高星后台管理系统权限与用户体系调研](/软件工程/技术/参考资料/Gitee%20高星后台管理系统权限与用户体系调研.md)
       - <a href="/软件工程/技术/参考资料/阿里巴巴%20Java%20开发手册%20黄山版.pdf" target="_blank" data-nosearch>阿里巴巴 Java 开发手册（黄山版）· PDF</a>
       - <a href="/软件工程/技术/参考资料/面试指北.pdf" target="_blank" data-nosearch>面试指北 · PDF</a>
