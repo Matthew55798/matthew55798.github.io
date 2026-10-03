@@ -475,13 +475,11 @@ PRD 的模板结构：
 
 ## 五 实现与验收
 
-这一部分回答一个问题：**当代理能飞快地写代码时，怎么保证它写的是好东西？** 答案是四个技能串成的流水线：让代理自己跑**反馈循环**（5.1）→ **红绿重构**把它变成纪律（`tdd`，5.2）→ **`implement`** 走完一个工作单元（5.3）→ **`code-review`** 双轴评审收尾（5.4）。
-
 ### 5.1 反馈循环 - 让代理能自己判断对错
 
 （P49–P50）
 
-落到实现阶段，操作原则只有一句：**必须让代理能自己验证对错，而不是靠你事后检查**。
+**必须让代理能自己验证对错，而不是靠你事后检查**。
 
 **反馈循环**不是新发明，它是成熟工程师的既有实践（因为优秀工程师从不相信自己的一次性产出），只是现在由代理来跑：
 
@@ -489,66 +487,60 @@ PRD 的模板结构：
 代理生成代码 → 跑检查（类型/测试/格式） → 据结果修正 → 再生成 → …直到质量达标
 ```
 
-循环越多、质量越高，输出越好。仓库里最强的是能**真正执行代码**的那几种：强类型（TypeScript 对 JavaScript）立刻暴露拼写与类型错误；自动化测试验证逻辑是否符合预期。
-
-**放哪里**：反馈循环并非每个会话都需要，所以**不该塞进 `CLAUDE.md`**，而应做成**技能按需调用**——`tdd` 技能管循环怎么转（见 5.2），`implement` 技能管一个工作单元怎么走完（见 5.3）。
-
 ### 5.2 红绿重构 - 让实现这一步提升质量
 
 （P56–P58）
 
-技巧来自 Kent Beck《极限编程实践》的 **red-green-refactor**（测试驱动开发的核心）。三个步骤，顺序不能变：
+技巧来自 Kent Beck《极限编程实践》的 **red-green-refactor**（测试驱动开发的核心）。三个步骤：
 
-| 步骤 | 做什么 | 关键点 |
-| --- | --- | --- |
-| 🔴 红 | 先写一个**会失败的测试**并**运行它确认失败** | "只写不跑"就没有红；修 bug 时它同时证明了 bug 真实存在 |
-| 🟢 绿 | 写**最小实现**让测试通过 | 只求通过，不追求完美 |
-| 🔁 重构 | 整理代码、提升质量，期间持续跑反馈循环 | 保持绿灯 |
+| 步骤 | 做什么 |
+| --- | --- |
+| 🔴 红 | 先写一个**会失败的测试**并**运行它确认失败** |
+| 🟢 绿 | 写**最小实现**让测试通过 |
+| 🔁 重构 | 整理代码、提升质量，期间持续跑反馈循环 |
 
 **为什么对 AI 尤其关键**：
 
-- 先有失败测试，意味着**代理在代码写出来之前就能运行和测试代码**；
 - 它**迫使生成的代码可测试**，而可测试就意味着便于修改（测试会捕获错误）；
-- 与 **tracer bullet test（追踪子弹测试）** 结合极佳：先建一个针对某个垂直切片的测试，再做通过它的最小实现，然后下一个失败测试、下一份最小实现，逐步推进；
-- 这样能压低 AI 在代码库里"**水平层喷射**"大量假测试的可能，那些测试往往没测到真东西；而且**失败测试对 LLM 来说较难伪造**。
-
-实战里讲师把 `do-work`（现 `implement`）技能的实施步骤改成红绿重构，并要求"**逐个测试、探针式推进，且只针对后端代码**"——因为当时测试套件只覆盖后端，前端还没有测试环境。
-
-> **避坑**：没有测试环境的部分（如前端）不要套用这套循环，否则"失败测试"无从谈起；前端该走的是原型 + 让代理用浏览器真点。
+- **失败测试较难伪造**。
 
 #### 承载它的 `tdd` 技能
 
-本地技能库里，**`tdd`** 就是把这个循环的规矩固定下来的常驻参考：主文件只给判断标准，细节按**渐进式披露**挂在 `tests.md`（好测试与坏测试对照）和 `mocking.md`（什么时候该 mock）上。代理在**进循环之前**读它，而不是跑完再补。
+```markdown
+# Test-Driven Development
 
-**什么算好测试**：通过**公共接口**验证行为，不碰实现细节——代码可以整体重写，测试不该跟着改。好测试读起来像一句规格（"user can checkout with valid cart" 直接说清存在什么能力），并且能在重构中存活；坏测试的典型信号是"重构完了、行为没变、测试却红了"。
+TDD is the red → green loop. This skill is the reference that makes that loop produce tests worth keeping: what a good test is, where tests go, the anti-patterns, and the rules of the loop. Every section applies on every cycle — consult them before and during the loop, not after.
 
-**接缝（seam）是测试落点**：seam 就是你站着观察行为的公共边界。技能里的硬规矩是**只测预先约定的接缝**——动手写测试前，先把待测接缝写下来与人对齐，**没确认的接缝不写测试**。不可能什么都测，先把接缝谈定，测试预算才会落在关键路径和复杂逻辑上，而不是每个边界情形（这一步正好接上前面的模块意识）。接口形状本身有疑问时（模块多深、接缝放哪、接口该暴露什么），转 `codebase-design` 技能取词汇——它是**参考文档**，不是要跑一遍的会话。
+When exploring the codebase, read `CONTEXT.md` (if it exists) so test names and interface vocabulary match the project's domain language, and respect ADRs in the area you're touching.
 
-**三条反模式**：
+## What a good test is
 
-| 反模式 | 症状 | 对策 |
-| --- | --- | --- |
-| **实现耦合** | mock 内部协作者、测私有方法、绕过接口去查数据库 | 只通过公共接口验证 |
-| **同义反复** | 期望值按实现的算法再算一遍（`expect(add(a, b)).toBe(a + b)`、手搓一份同样算法的快照），断言恒真 | 期望值取自独立来源：写死的字面量、算好的样例、规格 |
-| **水平切片** | 先把测试全写完，再写实现——测的是**想象中的**行为 | 垂直切片：一个测试 → 一份实现 → 再下一个测试 |
+Tests verify behavior through public interfaces, not implementation details. Code can change entirely; tests shouldn't. A good test reads like a specification — "user can checkout with valid cart" tells you exactly what capability exists — and survives refactors because it doesn't care about internal structure.
 
-**循环的四条规矩**：
+See [tests.md](tests.md) for examples and [mocking.md](mocking.md) for mocking guidelines.
 
-1. **红先于绿**：先写失败测试，再写刚好够过的代码；不预判后续测试，不加投机功能。
-2. **一次一片**：一个接缝、一个测试、一份最小实现。
-3. **重构不属于这个循环**：它归评审阶段（`code-review`，见 5.4），不是红 → 绿实现循环的一部分。
-4. 探索代码库时先读 `CONTEXT.md`，让测试命名与接口词汇跟项目术语一致，并尊重所触碰区域的 ADR。
+## Seams — where tests go
 
-> **与课程讲法的差异**：课程把重构算作红绿循环的第三步，当前 `tdd` 技能把它挪到评审阶段。冲突时**以你安装的技能为准**，课程只负责讲清概念。
+A **seam** is the public boundary you test at: the interface where you observe behavior without reaching inside. Tests live at seams, never against internals.
 
-**Mock 只出现在系统边界**：外部 API（支付、邮件）、数据库（有时，优先用测试库）、时间与随机数、文件系统（有时）。**不要 mock 自己写的类、内部协作者，以及任何你能控制的东西**。为了让边界可 mock，接口按可注入设计：依赖从参数传进来，而不是在函数里自己 `new` 客户端；外部操作做成**一个动作一个函数的 SDK 式接口**，而不是一个带条件分支的通用 fetcher——否则 mock 里要塞逻辑，测试立刻变脆。
+**Test only at pre-agreed seams.** Before writing any test, write down the seams under test and confirm them with the user. No test is written at an unconfirmed seam. You can't test everything — agreeing the seams up front is how testing effort lands on the critical paths and complex logic instead of every edge case.
 
-- [ ] 实现是否走红绿重构，且**先运行确认过测试失败**？
-- [ ] 测试是否只写在**预先确认的接缝**上，且只通过公共接口验证行为？
-- [ ] 有没有同义反复的断言（期望值按实现算法重算）或水平切片（先写完全部测试）？
-- [ ] mock 是否只出现在系统边界，没有 mock 内部协作者？
-- [ ] 是否只对测试覆盖到的代码用 TDD（前端别硬套）？
-- [ ] 有没有先花时间改进代码库本身，而不是只改提示词？
+Ask: "What's the public interface, and which seams should we test?"
+
+When the shape of that interface is itself in question — how deep the module is, where the seam belongs, what the interface should expose — use the `/codebase-design` skill for the vocabulary. It is the shared source of the module, interface, depth, seam, adapter, leverage and locality terms, and it is a reference to consult, not a session to run.
+
+## Anti-patterns
+
+- **Implementation-coupled** — mocks internal collaborators, tests private methods, or verifies through a side channel (querying the database instead of using the interface). The tell: the test breaks when you refactor but behavior hasn't changed.
+- **Tautological** — the assertion recomputes the expected value the way the code does (`expect(add(a, b)).toBe(a + b)`, a snapshot derived by hand the same way, a constant asserted equal to itself), so it passes by construction and can never disagree with the code. Expected values must come from an independent source of truth — a known-good literal, a worked example, the spec.
+- **Horizontal slicing** — writing all tests first, then all implementation. Bulk tests verify _imagined_ behavior: you test the _shape_ of things rather than user-facing behavior, the tests go insensitive to real changes, and you commit to test structure before understanding the implementation. Work in **vertical slices** instead — one test → one implementation → repeat, each test a **tracer bullet** that responds to what the last cycle taught you.
+
+## Rules of the loop
+
+- **Red before green.** Write the failing test first, then only enough code to pass it. Don't anticipate future tests or add speculative features.
+- **One slice at a time.** One seam, one test, one minimal implementation per cycle.
+- **Refactoring is not part of the loop.** It belongs to the review stage (see the `code-review` skill), not the red → green implementation cycle.
+```
 
 ### 5.3 `implement` 技能 - 一个工作单元怎么走完
 
@@ -564,22 +556,9 @@ PRD 的模板结构：
 5. 提交
 ```
 
-代理自己生成技能时，会有几个需要人工修剪的默认倾向：
-
-| 代理的默认写法 | 为什么要删 |
-| --- | --- |
-| 把技能写进**用户目录** | 这个技能与项目结构、特定反馈循环绑定，必须是**项目级** |
-| 塞进"与具体文件相关的约定" | 不属于执行技能的职责，而且会很快过时 |
-| "重复直到两者都通过、不要继续直到所有命令路径无错误" | 又重复又过严；"持续跑反馈循环直到一切就绪"就够了 |
-| 提醒"只暂存修改过的文件" | 多余 |
-| 对 commit message 提建议 | 不必，长一点无妨，甚至更有用 |
-| "规划 + 实施"两步必做 | 应标为**可选**：小任务一次做完；多阶段任务既然已经规划过，就不必重新规划 |
-
-> **金句**："我真的很喜欢简洁的技能。"技能越冗长，越容易被忽略，也就越容易塞进无关内容。
-
 #### 本机的 `implement` 技能
 
-课程里的 `do-work` 就是现在的 **`implement`**，本地安装版只有 15 行，正文一句不多：
+课程里的 `do-work` 就是现在的 **`implement`**：
 
 ```markdown
 Implement the work described by the user in the spec or tickets.
@@ -596,19 +575,7 @@ Commit your work to the current branch.
 
 逐条读下来，它把整条流水线钉在了五个点上：
 
-| 这句 | 含义 |
-| --- | --- |
-| `in the spec or tickets` | 输入必须是**规格或工单**，不是对话里飘着的需求——4.x 的产物在这里被消费 |
-| `Use /tdd where possible, at pre-agreed seams` | 尽量走 5.2 的红绿循环，且只用**预先约定的接缝**（这句话就是 `tdd` 技能的启动开关） |
-| `Run typechecking regularly, single test files regularly, and the full test suite once at the end` | 反馈节奏分三层：类型检查常跑、单个测试文件常跑、**全量套件只在收尾跑一次**——比课程版"持续跑到全过"更省，也更精确 |
-| `use /code-review to review the work` | 实施结束**必须**接双轴评审（见 5.4），不是可选礼节 |
-| `Commit your work to the current branch` | 收尾必须落到提交；不提醒"只暂存改过的文件"之类的细节 |
-
-还有一处值得注意：这个技能的 frontmatter 里写着 **`disable-model-invocation: true`**。意思是它**只能由人显式触发**（`/implement`），代理不会自己决定"现在该进入实现状态"——写代码是有后果的动作，入口留在人手里，正好呼应 1.9 的"人守在哪里"。
-
 #### 让检查变成确定性：pre-commit 钩子
-
-（P55）
 
 到这一步，反馈循环还只是被"鼓励"运行。要变成**确定性**，要用 git hook：
 
@@ -619,88 +586,13 @@ pnpm run typecheck     # 全仓类型检查
 pnpm run test          # 全量测试
 ```
 
-| 工具 | 职责 |
-| --- | --- |
-| `husky` | 管理 git 钩子（`husky init` 生成 `.husky/`） |
-| `lint-staged` | 只对暂存文件运行命令，配置在 `.lintstagedrc` |
-| `prettier` | 格式化，保证代理无法提交未格式化的代码 |
-
-讲师对"人类嫌慢"这件事的解读很精辟：
-
-> 开发者可能只想赶紧推代码，不想每次提交都等三分钟类型检查和测试。但对代理完全没问题，它不在乎跑多久，只会安静等待并观察结果。**对人类痛苦的摩擦，恰恰适合代理。**
-
-**验证方式**：故意把测试断言改坏（期望长度 99、实际得到 5）再提交，钩子会拦下提交并把失败反馈出来。注意钩子失败不只"阻止"，它同时在**告诉代理怎么修**。
-
-**检查清单**
-
-- [ ] 任务输入是规格/工单，而不是对话里的口头需求？
-- [ ] 这个仓库有 `implement`（旧名 `do-work`）技能吗？它是否控制在五行到十几行、放在项目级目录？
-- [ ] 技能里是否写明了三层反馈节奏（常跑类型检查、常跑单文件测试、收尾跑全量）？
-- [ ] 反馈循环是可执行的检查（typecheck / test），而不是让代理自评"我觉得差不多了"？
-- [ ] pre-commit 钩子是否把格式、类型、测试钉死在提交前？
-- [ ] 收尾是否固定为 `/code-review` + 提交到当前分支？
-
 ### 5.4 双轴评审 - 规范 Standards 与规格 Spec
 
 （P89–P92）
 
-**流水线**：**实施 → 自动化检查（测试、类型检查、pre-commit、格式化）→ 自动化审查 → 人工审查**，只有最后一层必须有人。
+**流水线**：**实施 → 自动化检查（测试、类型检查、pre-commit、格式化）→ 自动化审查 → 人工审查**。
 
 **自动化审查只查两件事**：**是否符合规格**（PRD 是否被正确实现）、**是否符合编码规范**。关键判断是：**把编码规范从"实施"移出，只给"评审"看**——实施要探索代码、推进功能、防错调试，预算已经很满；规范作为单一来源出现在评审阶段，反而提升质量。
-
-- **实现代理写出不符合规范的代码怎么办？** 让实现代理同时"实现 + 应用编码规范"符合人的直觉，但对 AI 是**任务过载**，会明显降低表现。正确做法是：走红绿重构循环，先让实现代理写基础实现并通过测试 → **清空上下文** → 让新的审查代理看 diff → **立即要求应用规范并修复**。自动审查确实有效，但 token 开销不小。
-- **怎么拿到结构化结果？** 让代理把结构化结果写进 XML 标签（如 `<output>`），再用 zod schema 校验，取 `output.inlineComments`、`output.replies` 之类字段——这样代理可以作为"**获取结构化输出的手段**"，再驱动后续动作（开别的代理、留评论），而且带重试，所以可靠。
-- **前端怎么给反馈循环？** 前端难在有两层：**功能对不对**（点击是否跳转、计时器算得对不对）和**好不好看**，jsdom、Vitest 之类只能测前者。虚拟 DOM 测试调试极其痛苦（没有浏览器可看、跑得慢、不稳定）。实用做法是**给代理浏览器访问权**（Playwright、agent browser 之类），让它对着 dev server 真点、真截图，并通过**可访问性检查器**把界面转成文本读进去。结论：这仍是难题，只能靠"少量前端测试 + 让代理浏览操作"来缓解。
-
-自动审查可以用 Sonnet 做实施、Opus 做评审，token 更省而质量还在；也可以让自动化审查直接修问题，再告知人工改了哪些，让人工看到接近完美的 PR。
-
-`code-review` 按两条轴同时看：**规范 Standards** 与**规格 Spec**。`coding-standards` 技能（现为规范文件 + `code-review` 的"规范"轴）的内容**从实施阶段移到评审阶段**，减轻实施负担。
-
-**测试节奏**："发布前的最优测试组合"是**错误心态**。应该保持**持续交付**：每五分钟、每次 CI 通过就是一个版本，把大发布拆小。大批量发布总有一部分代码有问题，而且差异太大难以定位；小批量出问题时你能看清具体 diff，回滚也不会牵连无关功能。最优测试就是**每天跑的 CI 测试**，前提是测试质量要高。讲师几乎总是写测试，尤其是后端，**在预先约定的接口处测试**，不写琐碎的微单元测试。
-
-#### 本机的 `code-review` 技能
-
-`code-review` 就是把这套双轴审查固化成流程的技能，输入是"**从某个固定点以来的改动**"（commit、分支、tag 或 merge-base），五步走完：
-
-**1. 钉住固定点。** 用户说的那个 ref 就是固定点（`main`、`HEAD~5`、tag 都行）；没说就先问。抓一次命令：`git diff <fixed-point>...HEAD`——**三点写法**，比较的是 merge-base，顺带记下 `git log <fixed-point>..HEAD --oneline`。动手前先确认 ref 能解析（`git rev-parse`）且 diff 非空：**坏 ref 和空 diff 要在这里就失败，而不是在两个并行子代理里失败**。
-
-**2. 找到规格来源。** 按优先级找：commit message 里的 issue 引用（`#123`、`Closes #45`、GitLab `!67`，走 `docs/agents/issue-tracker.md` 的工作流取回）→ 用户作为参数传进来的路径 → `docs/`、`specs/`、`.scratch/` 下与分支名或功能匹配的 spec 文件 → 都没有就问人；确实没有 spec 时 **Spec 轴跳过**，并在报告里注明 "no spec available"。（`docs/agents/issue-tracker.md` 缺失时先跑 `/setup-matt-pocock-skills`。）
-
-**3. 找到标准来源。** 仓库里任何写"代码该怎么写"的文件（`CODING_STANDARDS.md`、`CONTRIBUTING.md`）。**在此之上，Standards 轴永远自带一份坏味道基线**——来自 Fowler《重构》第 3 章的一组固定气味，即使仓库什么都没写也照样生效。基线有两条约束：
-
-- **仓库优先**：仓库里写明的标准永远压过基线；仓库认可的做法，基线就不再挑刺。
-- **永远是判断题**：每条气味只能写成"可能的 Feature Envy"这类带标签的启发式，**不是硬违规**；工具已经能管的一律跳过。
-
-| 气味 | 是什么 → 怎么修 |
-| --- | --- |
-| Mysterious Name | 名字说不清函数/变量/类型在干什么 → 改名；起不出诚实的名字，说明设计本身含糊 |
-| Duplicated Code | 同一段逻辑形状在多个 hunk 或文件里重复 → 抽出共享形状，两边都调它 |
-| Feature Envy | 一个方法访问别的对象的数据多过自己的 → 把方法搬到它羡慕的数据那边 |
-| Data Clumps | 同几个字段或参数总结伴出现（一个想诞生的小类型）→ 打包成一个类型再传 |
-| Primitive Obsession | 用基本类型或字符串顶替有资格独立成类型的领域概念 → 给概念一个小类型 |
-| Repeated Switches | 对同一类型的 `switch`/`if` 级联在改动里反复出现 → 换成多态，或两边共用一张 map |
-| Shotgun Surgery | 一个逻辑改动逼着你在很多文件里散点修改 → 把一起变化的东西收进同一个模块 |
-| Divergent Change | 一个文件因为几种不相关的原因被反复改 → 拆开，让每个模块只因一个原因而变 |
-| Speculative Generality | 为规格里并不存在的需求加的抽象、参数或钩子 → 删掉，先内联回去，等真实需求出现 |
-| Message Chains | 调用方不该依赖的长链 `a.b().c().d()` → 用第一个对象上的一个方法把链藏起来 |
-| Middle Man | 一个类或函数基本只做转发 → 砍掉，直接调真正的目标 |
-| Refused Bequest | 子类忽略或推翻它继承来的大部分东西 → 放弃继承，改用组合 |
-
-**4. 并行开两个子代理。** 两条轴各跑一个子代理，**互不污染对方的上下文**：
-
-- **Standards 子代理**：喂给它 diff 命令 + commit 列表 + 第 3 步找到的标准文件清单，**外加完整的气味基线原文**（子代理没有别的渠道拿到它）；要求它逐文件/逐 hunk 报告"违反哪条成文标准（引用文件与规则）"和"命中了哪条基线气味（引用 hunk）"，区分硬违规与判断题，工具管的部分跳过，**400 词以内**。
-- **Spec 子代理**：喂给它 diff 命令 + commit 列表 + spec 内容；要求它报告"规格要求了但缺失或不完整的"、"diff 里做了但没被要求的（范围蔓延）"、"看起来实现了但实现有问题的"，每条都要**引用规格原文**，**400 词以内**。
-
-**5. 聚合，但不合并。** 两份报告以 `## Standards` 和 `## Spec` 两个标题原样（或轻清洗后）并列呈现，**不要合并、不要重排序**。结尾给一行小结：各轴的发现总数，以及**各轴内部**最严重的一条；**不跨轴选唯一赢家**——那正是分轴要防止的重新排名。
-
-#### 为什么是两条轴
-
-一次改动完全可能通过一条轴、挂掉另一条：
-
-- 每条规范都遵守了，但实现的东西是错的 → **Standards 过，Spec 挂**；
-- issue 要的全都做到了，但破坏了项目约定 → **Spec 过，Standards 挂**。
-
-分开报告，才能防止一条轴掩盖另一条。也正因为两条轴在评估**不同的东西**，评审阶段才值得拿一个干净的上下文去换：实施代理写基础实现并通过测试 → `/clear` → 审查代理只看 diff，它才有预算同时盯住规范与规格。
 
 ## 六 离线执行与人工协同
 
