@@ -9,7 +9,7 @@
 本文是《AI 驱动的全流程软件开发实战》的第一部分。全课共两部分：
 
 - **第一部分 · AI 工程词汇**（本文）：先用一节交代 AI 的来历，以及 AI、机器学习、深度学习三个概念的关系；再以菜鸟教程《AI 底层架构》的五层总览图立起骨架，**自底向上**逐层讲上去——从基座模型与多模态，到 Prompt 与 Prompt 工程进阶，再到 Agent 架构、上下文工程、Harness 组件与 Loop 工具，最后落到工具生态、评估安全与演进路线。前九层以图文讲解为主。
-- **第二部分 · Matt Pocock Skills 与标准工作流**（[配套讲义](/软件工程/技术/AI/AI_coding_for_real_engineers_Matt_Pocock_skills.md)）：一套可以直接落地的 AI 开发流程，从需求拷问、规格拆票，到实现评审与上下文交接。
+- **第二部分 · AI Coding for Real Engineers**（[配套讲义](/软件工程/技术/AI/AI_coding_for_real_engineers.md)）：一套可以直接落地的 AI 开发流程，从需求拷问、规格拆票，到实现评审与上下文交接。
 
 ## 1.1 AI 底层架构
 

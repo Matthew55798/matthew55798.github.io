@@ -15,12 +15,12 @@
 ### 软件工程
 - **技术**:
   - Java 基础：JVM、多线程、集合框架
-  - 常用框架：Spring、Spring Boot、MyBatis、MyBatis Plus
-  - 数据库：Redis、Elasticsearch、RDB（事务、SQL 优化、分库分表）
+  - 常用框架：Spring、Spring Boot、MyBatis、Netty 与 WebFlux、数据库连接池
+  - 数据库：Redis、Elasticsearch、RDB（事务、Oracle/MySQL 性能优化、分库分表）
   - 系统设计基础、分布式系统、微服务架构
   - 高可用、高性能、可观测
   - AI：AI 工程词汇、AI 工程、LLM 业务实战、AI Agent、机器学习
-  - 参考资料：Java 开发手册、离线文档快照、AI Coding 资料
+  - 参考资料：Java 开发手册、面试资料、外部调研文档
 - **常用命令**: Linux、Windows、Docker、Oracle
 - **项目经验**: 实战项目总结
 - **简历**: 职业发展记录
